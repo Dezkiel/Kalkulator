@@ -12,7 +12,7 @@ namespace Kalkulator_Prosty_2
 {
     public partial class CalcZloz : Form
     {
-        private static int Silnia(double zm1)
+        private static int OblczanieSilni(double zm1)
         {
             int result = 1;
             for (int i = 1; i <= zm1; i++)
@@ -251,7 +251,7 @@ namespace Kalkulator_Prosty_2
             }
             else
             {                
-                textBox2.Text = Convert.ToString(Silnia(zm1));
+                textBox2.Text = Convert.ToString(OblczanieSilni(zm1));
             }
         }
 
