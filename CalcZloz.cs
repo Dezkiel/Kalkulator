@@ -21,39 +21,8 @@ namespace Kalkulator_Prosty_2
             }
             return result;
         }
-
-        private static double Exp (double zm2)
-        {
-            double wynik = 1;
-            for (int i =  1; i <= zm2; i++)
-            {
-                wynik = 10 * zm2;
-            }
-            return wynik;
-        }
-       
-           
-        /*private static double PowX(double zm1, double zm2)
-        {
-            if (zm2 < 1)
-            {
-
-                return 0;
-            }
-            else
-            {
-                double result = 1;
-                for (double i = 1; i <= zm2; i++)
-                {
-                    result = zm1 * zm1;
-                }
-                return result;
-            }
-
-        }*/          
-
-        double zm1 = 0, zm2 = 0, zm3 = 0;
-        
+               
+        double zm1 = 0, zm2 = 0, zm3 = 0;        
         int zm4;
         double memory;
         string wybor;
