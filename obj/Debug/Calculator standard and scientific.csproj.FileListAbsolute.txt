@@ -9,3 +9,14 @@ C:\Users\Dezkiel Komp\Desktop\Solutions\Kalkulator Prosty 2\obj\Debug\Calculator
 C:\Users\Dezkiel Komp\Desktop\Solutions\Kalkulator Prosty 2\obj\Debug\Calculator standard and scientific.csproj.CoreCompileInputs.cache
 C:\Users\Dezkiel Komp\Desktop\Solutions\Kalkulator Prosty 2\obj\Debug\Kalkulator Prosty 2.exe
 C:\Users\Dezkiel Komp\Desktop\Solutions\Kalkulator Prosty 2\obj\Debug\Kalkulator Prosty 2.pdb
+D:\Projekty C#\kalkulator\bin\Debug\Kalkulator Prosty 2.exe.config
+D:\Projekty C#\kalkulator\bin\Debug\Kalkulator Prosty 2.exe
+D:\Projekty C#\kalkulator\bin\Debug\Kalkulator Prosty 2.pdb
+D:\Projekty C#\kalkulator\obj\Debug\Calculator standard and scientific.csprojAssemblyReference.cache
+D:\Projekty C#\kalkulator\obj\Debug\Kalkulator_Prosty_2.CalcPros.resources
+D:\Projekty C#\kalkulator\obj\Debug\Kalkulator_Prosty_2.CalcZloz.resources
+D:\Projekty C#\kalkulator\obj\Debug\Kalkulator_Prosty_2.Properties.Resources.resources
+D:\Projekty C#\kalkulator\obj\Debug\Calculator standard and scientific.csproj.GenerateResource.cache
+D:\Projekty C#\kalkulator\obj\Debug\Calculator standard and scientific.csproj.CoreCompileInputs.cache
+D:\Projekty C#\kalkulator\obj\Debug\Kalkulator Prosty 2.exe
+D:\Projekty C#\kalkulator\obj\Debug\Kalkulator Prosty 2.pdb
