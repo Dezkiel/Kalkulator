@@ -12,18 +12,17 @@ namespace Kalkulator_Prosty_2
 {
     public partial class CalcZloz : Form
     {
-        private static int OblczanieSilni(double zm1)
+        private static int OblczanieSilni(double firstInput)
         {
             int result = 1;
-            for (int i = 1; i <= zm1; i++)
+            for (int i = 1; i <= firstInput; i++)
             {
                 result *= i;
             }
             return result;
         }
                
-        double zm1 = 0, zm2 = 0, zm3 = 0;        
-        int zm4;
+        double firstInput = 0, secondInput = 0, temporaryNumber = 0;        
         double memory;
         enum dzialania {add = 0, substract = 1, multiply = 2, divide = 3, powY = 4, rootY = 5, Modulo = 6, Exp = 7};
         string wybor;
@@ -54,7 +53,7 @@ namespace Kalkulator_Prosty_2
             {
                 textBox2.Clear();                
             }
-            textBox2.AppendText("0");
+            
         }
 
         private void Button_1_Click(object sender, EventArgs e)
@@ -153,43 +152,43 @@ namespace Kalkulator_Prosty_2
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.add;
             textBox2.Clear();            
         }
 
         private void Button_substract_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.substract;
             textBox2.Clear();
         }
 
         private void Button_multiply_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.multiply;
             textBox2.Clear();
         }
 
         private void Button_divide_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.divide;
             textBox2.Clear();
         }
 
         private void Button_Reciprocal_Click(object sender, EventArgs e)
         {            
-            zm1 = Convert.ToDouble(textBox2.Text);
-            double wynik = 1 / zm1;
+            firstInput = Convert.ToDouble(textBox2.Text);
+            double wynik = 1 / firstInput;
             textBox2.Text = Convert.ToString(wynik);
         }
 
         private void Button_root_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            textBox2.Text = Convert.ToString(Math.Sqrt(zm1));
+            firstInput = Convert.ToDouble(textBox2.Text);
+            textBox2.Text = Convert.ToString(Math.Sqrt(firstInput));
         }
 
         private void Button_PlusMinus_Click(object sender, EventArgs e)
@@ -200,9 +199,9 @@ namespace Kalkulator_Prosty_2
 
         private void Button_clear_Click(object sender, EventArgs e)
         {
-            zm1 = 0;
-            zm2 = 0;
-            zm3 = 0;
+            firstInput = 0;
+            secondInput = 0;
+            temporaryNumber = 0;
             textBox2.Text = Convert.ToString(0);
         }
 
@@ -213,15 +212,15 @@ namespace Kalkulator_Prosty_2
 
         private void Button_Factorial_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
 
-            if (zm1 == 0)
+            if (firstInput == 0)
             {
                 textBox2.Text = Convert.ToString(1);
             }
             else
             {                
-                textBox2.Text = Convert.ToString(OblczanieSilni(zm1));
+                textBox2.Text = Convert.ToString(OblczanieSilni(firstInput));
             }
         }
 
@@ -234,14 +233,14 @@ namespace Kalkulator_Prosty_2
         {
             if (wybor == "Degrees")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                double wynik = (zm1 * (Math.PI)) / 180;
+                firstInput = Convert.ToDouble(textBox2.Text);
+                double wynik = (firstInput * (Math.PI)) / 180;
                 textBox2.Text = Convert.ToString("Degrees: " +(Math.Sin(wynik)));
             }
             else if(wybor == "Radians")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                textBox2.Text = Convert.ToString("Radians: " + Math.Sin(zm1));
+                firstInput = Convert.ToDouble(textBox2.Text);
+                textBox2.Text = Convert.ToString("Radians: " + Math.Sin(firstInput));
             }
             else if(wybor == "Grads")
             {
@@ -263,28 +262,20 @@ namespace Kalkulator_Prosty_2
             {
                 wybor = "Radians";
             }
-        }
-
-        private void RadioButton_Grads_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton_Grads.Checked == true)
-            {
-                wybor = "Grads";
-            }
-        }
+        }       
 
         private void Button2_Cos_Click(object sender, EventArgs e)
         {
             if (wybor == "Degrees")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                double wynik = (zm1 * (Math.PI)) / 180;
+                firstInput = Convert.ToDouble(textBox2.Text);
+                double wynik = (firstInput * (Math.PI)) / 180;
                 textBox2.Text = Convert.ToString("Degrees: " + (Math.Cos(wynik)));
             }
             else if (wybor == "Radians")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                textBox2.Text = Convert.ToString("Radians: " + Math.Cos(zm1));
+                firstInput = Convert.ToDouble(textBox2.Text);
+                textBox2.Text = Convert.ToString("Radians: " + Math.Cos(firstInput));
             }
         }
 
@@ -292,14 +283,14 @@ namespace Kalkulator_Prosty_2
         {
             if (wybor == "Degrees")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                double wynik = (zm1 * (Math.PI)) / 180;
+                firstInput = Convert.ToDouble(textBox2.Text);
+                double wynik = (firstInput * (Math.PI)) / 180;
                 textBox2.Text = Convert.ToString("Degrees: " + (Math.Tan(wynik)));
             }
             else if (wybor == "Radians")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                textBox2.Text = Convert.ToString("Radians: " + Math.Tan(zm1));
+                firstInput = Convert.ToDouble(textBox2.Text);
+                textBox2.Text = Convert.ToString("Radians: " + Math.Tan(firstInput));
             }
         }
 
@@ -307,14 +298,14 @@ namespace Kalkulator_Prosty_2
         {
             if (wybor == "Degrees")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                double wynik = (zm1 * (Math.PI)) / 180;
+                firstInput = Convert.ToDouble(textBox2.Text);
+                double wynik = (firstInput * (Math.PI)) / 180;
                 textBox2.Text = Convert.ToString("Degrees: " + (Math.Sinh(wynik)));
             }
             else if (wybor == "Radians")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                textBox2.Text = Convert.ToString("Radians: " + Math.Sinh(zm1));
+                firstInput = Convert.ToDouble(textBox2.Text);
+                textBox2.Text = Convert.ToString("Radians: " + Math.Sinh(firstInput));
             }
         }
 
@@ -322,14 +313,14 @@ namespace Kalkulator_Prosty_2
         {
             if (wybor == "Degrees")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                double wynik = (zm1 * (Math.PI)) / 180;
+                firstInput = Convert.ToDouble(textBox2.Text);
+                double wynik = (firstInput * (Math.PI)) / 180;
                 textBox2.Text = Convert.ToString("Degrees: " + (Math.Cosh(wynik)));
             }
             else if (wybor == "Radians")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                textBox2.Text = Convert.ToString("Radians: " + Math.Cosh(zm1));
+                firstInput = Convert.ToDouble(textBox2.Text);
+                textBox2.Text = Convert.ToString("Radians: " + Math.Cosh(firstInput));
             }
         }
 
@@ -337,34 +328,34 @@ namespace Kalkulator_Prosty_2
         {
             if (wybor == "Degrees")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                double wynik = (zm1 * (Math.PI)) / 180;
+                firstInput = Convert.ToDouble(textBox2.Text);
+                double wynik = (firstInput * (Math.PI)) / 180;
                 textBox2.Text = Convert.ToString("Degrees: " + (Math.Tanh(wynik)));
             }
             else if (wybor == "Radians")
             {
-                zm1 = Convert.ToDouble(textBox2.Text);
-                textBox2.Text = Convert.ToString("Radians: " + Math.Tanh(zm1));
+                firstInput = Convert.ToDouble(textBox2.Text);
+                textBox2.Text = Convert.ToString("Radians: " + Math.Tanh(firstInput));
             }
         }
 
         private void Button_Xpow2_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            textBox2.Text = Convert.ToString(zm1 * zm1);
+            firstInput = Convert.ToDouble(textBox2.Text);
+            textBox2.Text = Convert.ToString(firstInput * firstInput);
         }
 
         private void Button_PowerY_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.powY;
             textBox2.Clear();
         }
 
         private void Button_Power3_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            textBox2.Text = Convert.ToString(zm1 * zm1 * zm1);
+            firstInput = Convert.ToDouble(textBox2.Text);
+            textBox2.Text = Convert.ToString(firstInput * firstInput * firstInput);
         }
 
         private void Button_MC_Click(object sender, EventArgs e)
@@ -386,69 +377,76 @@ namespace Kalkulator_Prosty_2
         private void Button_Mplus_Click(object sender, EventArgs e)
         {
             double wynik;
-            zm1 = Convert.ToDouble(textBox2.Text);
-            wynik = zm1 + memory;
+            firstInput = Convert.ToDouble(textBox2.Text);
+            wynik = firstInput + memory;
             textBox2.Text = Convert.ToString(wynik);
         }
 
         private void Button_Mminus_Click(object sender, EventArgs e)
         {
             double wynik;
-            zm1 = Convert.ToDouble(textBox2.Text);
-            wynik = zm1 - memory;
+            firstInput = Convert.ToDouble(textBox2.Text);
+            wynik = firstInput - memory;
             textBox2.Text = Convert.ToString(wynik);
         }
 
         private void Button_RootY_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.rootY;
             textBox2.Clear();
         }
 
         private void Button_Root3_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            textBox2.Text = (Convert.ToString(Math.Pow(zm1, 0.333333)));
+            firstInput = Convert.ToDouble(textBox2.Text);
+            textBox2.Text = (Convert.ToString(Math.Pow(firstInput, 0.333333)));
         }
 
         private void Button_10powX_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            textBox2.Text = Convert.ToString(Math.Pow(10, zm1));
+            firstInput = Convert.ToDouble(textBox2.Text);
+            textBox2.Text = Convert.ToString(Math.Pow(10, firstInput));
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            textBox2.Text = Convert.ToString(Math.Log10(zm1));
+            firstInput = Convert.ToDouble(textBox2.Text);
+            textBox2.Text = Convert.ToString(Math.Log10(firstInput));
         }
 
         private void Button_in_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            textBox2.Text = Convert.ToString(Math.Log(zm1));
+            firstInput = Convert.ToDouble(textBox2.Text);
+            textBox2.Text = Convert.ToString(Math.Log(firstInput));
         }
 
         private void Button_Mod_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.Modulo;
             textBox2.Clear();
         }
 
         private void Button_Exp_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
+            firstInput = Convert.ToDouble(textBox2.Text);
             dzialanie = (int)dzialania.Exp;
             textBox2.Clear();
         }
 
         private void Button_int_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox2.Text);
-            zm4 = Convert.ToInt32(zm1);
-            textBox2.Text = Convert.ToString(zm4);            
+            
+            firstInput = Convert.ToDouble(textBox2.Text);
+            int wynik = Convert.ToInt32(firstInput);
+            textBox2.Text = Convert.ToString(wynik);            
+        }
+
+        private void Button_CE_Click(object sender, EventArgs e)
+        {
+            secondInput = 0;
+            textBox2.Text = Convert.ToString(firstInput);
         }
 
         private void Button_Percent_Click(object sender, EventArgs e)
@@ -458,34 +456,34 @@ namespace Kalkulator_Prosty_2
                 case 0:
                     {
                         double wynik;
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        zm3 = (zm1 * zm2) / 100;
-                        wynik = zm1 + zm3;
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        temporaryNumber = (firstInput * secondInput) / 100;
+                        wynik = firstInput + temporaryNumber;
                         textBox2.Text = (Convert.ToString(wynik));
                     }break;
                 case 1:
                     {
                         double wynik;
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        zm3 = (zm1 * zm2) / 100;
-                        wynik = zm1 - zm3;
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        temporaryNumber = (firstInput * secondInput) / 100;
+                        wynik = firstInput - temporaryNumber;
                         textBox2.Text = (Convert.ToString(wynik));
                     }break;
                 case 2:
                     {
                         double wynik;
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        zm3 = (zm1 * zm2) / 100;
-                        wynik = zm1 * zm3;
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        temporaryNumber = (firstInput * secondInput) / 100;
+                        wynik = firstInput * temporaryNumber;
                         textBox2.Text = (Convert.ToString(wynik));
                     }
                     break;
                 case 3:
                     {
                         double wynik;
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        zm3 = (zm1 * zm2) / 100;
-                        wynik = zm1 / zm3;
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        temporaryNumber = (firstInput * secondInput) / 100;
+                        wynik = firstInput / temporaryNumber;
                         textBox2.Text = (Convert.ToString(wynik));
                     }
                     break;
@@ -499,53 +497,53 @@ namespace Kalkulator_Prosty_2
             {
                 case 0:
                     {                             
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        textBox2.Text = Convert.ToString(zm1 + zm2);                       
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        textBox2.Text = Convert.ToString(firstInput + secondInput);                       
                     }
                     break;
                 case 1:
                     {
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        textBox2.Text = Convert.ToString(zm1 - zm2);
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        textBox2.Text = Convert.ToString(firstInput - secondInput);
                     }
                     break;
                 case 2:
                     {
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        textBox2.Text = Convert.ToString(zm1 * zm2);
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        textBox2.Text = Convert.ToString(firstInput * secondInput);
                     }break;
                 case 3:
                     {
-                        if (zm2 == 0)
+                        if (secondInput == 0)
                         {
                             textBox2.Text = "DIV / 0 !!!";
                         }
                         else
                         {
-                            zm2 = Convert.ToDouble(textBox2.Text);
-                            textBox2.Text = Convert.ToString(zm1 / zm2);
+                            secondInput = Convert.ToDouble(textBox2.Text);
+                            textBox2.Text = Convert.ToString(firstInput / secondInput);
                         }
                     }break;
                 case 4:
                     {
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        textBox2.Text = Convert.ToString(Math.Pow(zm1,zm2));
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        textBox2.Text = Convert.ToString(Math.Pow(firstInput,secondInput));
                     }break;
                 case 5:
                     {                        
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        textBox2.Text = Convert.ToString(Math.Pow(zm1, (1 / zm2)));
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        textBox2.Text = Convert.ToString(Math.Pow(firstInput, (1 / secondInput)));
                     }
                     break;
                 case 6:
                     {
-                        zm2 = Convert.ToDouble(textBox2.Text);
-                        textBox2.Text = (Convert.ToString(zm1 % zm2));
+                        secondInput = Convert.ToDouble(textBox2.Text);
+                        textBox2.Text = (Convert.ToString(firstInput % secondInput));
                     }break;
                 case 7:
                     {                       
-                        zm2 = Convert.ToDouble(textBox2.Text);                        
-                        textBox2.Text = Convert.ToString(zm1 * Math.Pow(10,zm2));
+                        secondInput = Convert.ToDouble(textBox2.Text);                        
+                        textBox2.Text = Convert.ToString(firstInput * Math.Pow(10,secondInput));
                         
                     }break;
             }

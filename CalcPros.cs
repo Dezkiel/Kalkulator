@@ -12,9 +12,10 @@ namespace Kalkulator_Prosty_2
 {
     public partial class CalcPros : Form
     {
-        double zm1 = 0, zm2 = 0;        
+        double zm1 = 0, zm2 = 0; 
+        enum dzialania {add = 0, substract = 1, multiply = 2, divide = 3}
+        int dzialanie;
         double memory;
-        string dzialanie;
 
         public CalcPros()
         {
@@ -115,33 +116,41 @@ namespace Kalkulator_Prosty_2
 
         private void Button_coma_Click(object sender, EventArgs e)
         {
-            textBox1.AppendText(",");
+            if (textBox1.Text.Contains(","))
+            {
+                textBox1.Text = textBox1.Text;
+            }
+            else
+            {
+                textBox1.AppendText(",");
+            }
         }
 
         private void Button_add_Click(object sender, EventArgs e)
-        {             
-            dzialanie = "add";
+        {
+            zm1 = Convert.ToDouble(textBox1.Text);
+            dzialanie = (int)dzialania.add;
             textBox1.Clear();
         }
 
         private void Button_substract_Click(object sender, EventArgs e)
         {
             zm1 = Convert.ToDouble(textBox1.Text);
-            dzialanie = "subs";
+            dzialanie = (int)dzialania.substract;
             textBox1.Clear();
         }
 
         private void Button_multiply_Click(object sender, EventArgs e)
         {
             zm1 = Convert.ToDouble(textBox1.Text);
-            dzialanie = "mult";
+            dzialanie = (int)dzialania.multiply;
             textBox1.Clear();
         }
 
         private void Button_divide_Click(object sender, EventArgs e)
         {
             zm1 = Convert.ToDouble(textBox1.Text);
-            dzialanie = "div";
+            dzialanie = (int)dzialania.divide;
             textBox1.Clear();
         }
 
@@ -152,33 +161,35 @@ namespace Kalkulator_Prosty_2
         }
 
         private void Button_equals_Click(object sender, EventArgs e)
-        {            
-
-            if (dzialanie == "add")
+        {
+            switch (dzialanie)
             {
-                zm2 = Convert.ToDouble(textBox1.Text);
-                textBox1.Text = Convert.ToString(zm1 + zm2);                
-            }
-            else if (dzialanie == "subs")
-            {
-                zm2 = Convert.ToDouble(textBox1.Text);
-                textBox1.Text = Convert.ToString(zm1 - zm2);
-            }
-            else if (dzialanie == "mult")
-            {
-                zm2 = Convert.ToDouble(textBox1.Text);
-                textBox1.Text = Convert.ToString(zm1 * zm2);
-            }
-            else if (dzialanie == "div")
-            {
-                zm2 = Convert.ToDouble(textBox1.Text);
-                textBox1.Text = Convert.ToString(zm1 / zm2);
-            }
-            /*else if (dzialanie == "root")
-            {
-                double sqrt = Math.Sqrt(zm1);
-                textBox1.Text = Convert.ToString(sqrt);
-            }*/
+                case 0:
+                    {
+                        zm2 = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(zm1 + zm2);
+                    }
+                    break;
+                case 1:
+                    {
+                        zm2 = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(zm1 - zm2);
+                    }
+                    break;
+                case 2:
+                    {
+                        zm2 = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(zm1 * zm2);
+                    }
+                    break;
+                case 3:
+                    {
+                        zm2 = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(zm1 / zm2);
+                    }
+                    break;
+            }            
+            
         }
 
         private void Button_clear_Click(object sender, EventArgs e)
