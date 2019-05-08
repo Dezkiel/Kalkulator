@@ -52,8 +52,7 @@ namespace Kalkulator_Prosty_2
            if (textBox2.Text == "0")
             {
                 textBox2.Clear();                
-            }
-            
+            }            
         }
 
         private void Button_1_Click(object sender, EventArgs e)
