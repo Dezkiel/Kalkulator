@@ -206,7 +206,10 @@ namespace Kalkulator_Prosty_2
 
         private void Button_Backspace_Click(object sender, EventArgs e)
         {
-            
+            if (textBox2.Text.Length > 0)
+            {
+                textBox2.Text = textBox2.Text.Remove(textBox2.Text.Length - 1);
+            }
         }
 
         private void Button_Factorial_Click(object sender, EventArgs e)

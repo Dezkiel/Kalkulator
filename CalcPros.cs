@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Kalkulator_Prosty_2
 {
     public partial class CalcPros : Form
     {
-        double zm1 = 0, zm2 = 0; 
+        double firstInput = 0, secondInput = 0; 
         enum dzialania {add = 0, substract = 1, multiply = 2, divide = 3}
         int dzialanie;
         double memory;
@@ -128,36 +129,36 @@ namespace Kalkulator_Prosty_2
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox1.Text);
+            firstInput = Convert.ToDouble(textBox1.Text);
             dzialanie = (int)dzialania.add;
             textBox1.Clear();
         }
 
         private void Button_substract_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox1.Text);
+            firstInput = Convert.ToDouble(textBox1.Text);
             dzialanie = (int)dzialania.substract;
             textBox1.Clear();
         }
 
         private void Button_multiply_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox1.Text);
+            firstInput = Convert.ToDouble(textBox1.Text);
             dzialanie = (int)dzialania.multiply;
             textBox1.Clear();
         }
 
         private void Button_divide_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox1.Text);
+            firstInput = Convert.ToDouble(textBox1.Text);
             dzialanie = (int)dzialania.divide;
             textBox1.Clear();
         }
 
         private void Button_root_Click(object sender, EventArgs e)
         {
-            zm1 = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = Convert.ToString(Math.Sqrt(zm1));
+            firstInput = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = Convert.ToString(Math.Sqrt(firstInput));
         }
 
         private void Button_equals_Click(object sender, EventArgs e)
@@ -166,26 +167,26 @@ namespace Kalkulator_Prosty_2
             {
                 case 0:
                     {
-                        zm2 = Convert.ToDouble(textBox1.Text);
-                        textBox1.Text = Convert.ToString(zm1 + zm2);
+                        secondInput = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(firstInput + secondInput);
                     }
                     break;
                 case 1:
                     {
-                        zm2 = Convert.ToDouble(textBox1.Text);
-                        textBox1.Text = Convert.ToString(zm1 - zm2);
+                        secondInput = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(firstInput - secondInput);
                     }
                     break;
                 case 2:
                     {
-                        zm2 = Convert.ToDouble(textBox1.Text);
-                        textBox1.Text = Convert.ToString(zm1 * zm2);
+                        secondInput = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(firstInput * secondInput);
                     }
                     break;
                 case 3:
                     {
-                        zm2 = Convert.ToDouble(textBox1.Text);
-                        textBox1.Text = Convert.ToString(zm1 / zm2);
+                        secondInput = Convert.ToDouble(textBox1.Text);
+                        textBox1.Text = Convert.ToString(firstInput / secondInput);
                     }
                     break;
             }            
@@ -194,8 +195,8 @@ namespace Kalkulator_Prosty_2
 
         private void Button_clear_Click(object sender, EventArgs e)
         {
-            zm1 = 0;
-            zm2 = 0;
+            firstInput = 0;
+            secondInput = 0;
             textBox1.Clear();
             textBox1.Text = "0";
         }
@@ -219,16 +220,16 @@ namespace Kalkulator_Prosty_2
         private void Button_Mplus_Click(object sender, EventArgs e)
         {
             double wynik;
-            zm1 = Convert.ToDouble(textBox1.Text);
-            wynik = zm1 + memory;
+            firstInput = Convert.ToDouble(textBox1.Text);
+            wynik = firstInput + memory;
             textBox1.Text = Convert.ToString(wynik);
         }       
 
         private void Button_Mminus_Click(object sender, EventArgs e)
         {
             double wynik;
-            zm1 = Convert.ToDouble(textBox1.Text);
-            wynik = zm1 - memory;
+            firstInput = Convert.ToDouble(textBox1.Text);
+            wynik = firstInput - memory;
             textBox1.Text = Convert.ToString(wynik);
         }
 
